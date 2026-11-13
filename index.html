@@ -460,6 +460,41 @@ section,[id]{scroll-margin-top:96px}
   .fab{transform:none}
 }
 
+/* ===== Mehrseitige Navigation (Leistungen-Menü, mobiles Menü, Footer) ===== */
+.links{align-items:center}
+.links a[aria-current=page],.dd>button[aria-current=page]{background:rgba(127,127,127,.18)}
+.dd{position:relative}
+.dd>button{padding:10px 14px;border-radius:999px;font-weight:600;font-size:.92rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.dd>button:hover,.dd.o>button{background:rgba(127,127,127,.16)}
+.dd>button::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .25s}
+.dd.o>button::after{transform:translateY(1px) rotate(225deg)}
+.ddm{position:absolute;top:calc(100% + 12px);left:50%;width:min(540px,92vw);transform:translate(-50%,8px);background:var(--paper);color:var(--ink);border-radius:24px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:2px;box-shadow:0 30px 60px -28px rgba(14,28,21,.55),inset 0 0 0 1px rgba(18,27,22,.08);opacity:0;visibility:hidden;transition:opacity .25s,transform .3s var(--ease),visibility .25s;z-index:5}
+.ddm::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.dd.o .ddm{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (hover:hover){.dd:hover .ddm{opacity:1;visibility:visible;transform:translate(-50%,0)}}
+.links .ddm a{display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:16px;font-size:.95rem}
+.links .ddm a:hover{background:var(--cream)}
+.links .ddm a[aria-current=page]{background:var(--sand)}
+.ddm b{font-weight:700;letter-spacing:-.02em}
+.ddm small{font-size:.76rem;color:var(--muted);font-weight:600}
+.ddm .ddf{grid-column:1/-1;background:var(--forest);color:#fff;margin-bottom:4px}
+.links .ddm .ddf:hover{background:var(--forest2)}
+.ddm .ddf small{color:#c5d4cb}
+@media (max-width:1100px){.links a,.dd>button{padding:10px 10px}}
+.mmenu a.m{font-size:clamp(1.6rem,5.4vw,2.2rem);padding:10px 0}
+.mmenu a[aria-current=page]{color:var(--rose)}
+.mmh{margin:22px 0 8px;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.mmg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mmg a{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.07);font-weight:650;font-size:.95rem;line-height:1.25}
+.mmx{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:20px;font-size:.9rem;color:#9fb3a7}
+.mmx a{text-decoration:underline;text-underline-offset:3px}
+footer.site .wrap{grid-template-columns:1.35fr 1fr 1fr .9fr}
+.dw .act{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+footer.site .fh{margin-top:16px}
+footer.site .fh b{display:block;color:#fff;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+@media (max-width:960px){footer.site .wrap{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer.site .wrap{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -492,18 +527,18 @@ section,[id]{scroll-margin-top:96px}
       <img src="img/logo.png" srcset="img/logo.png 425w, img/logo@2x.png 850w" sizes="(max-width:720px) 168px, 200px" width="425" height="140" alt="TIER.TRAINING Leipzig">
     </a>
     <nav class="links" aria-label="Hauptnavigation">
-      <a href="#finder">Kursfinder</a><a href="#kurse">Kurse &amp; Preise</a><a href="#johannes">Johannes</a><a href="#galerie">Galerie</a><a href="#faq">Fragen</a>
+      <div class="dd" id="dd"><button type="button" aria-expanded="false" aria-haspopup="true">Leistungen</button><div class="ddm"><a class="ddf" href="#finder"><b>Kursfinder</b><small>Welches Training passt zu uns?</small></a><a href="welpenschule.html"><b>Welpenschule</b><small>Gruppenkurs · 170 €</small></a><a href="erziehungskurs.html"><b>Erziehungskurs</b><small>Gruppenkurs · 240 €</small></a><a href="geraetearbeit.html"><b>Gerätearbeit</b><small>Gruppenkurs · 100 €</small></a><a href="obedience.html"><b>Obedience</b><small>siehe Preisliste</small></a><a href="anti-giftkoeder-training.html"><b>Anti-Giftköder-Training</b><small>Gruppenkurs · 180 €</small></a><a href="leinenfuehrigkeit.html"><b>Leinenführigkeit</b><small>Intensivtraining · 170 €</small></a><a href="rueckruf.html"><b>Rückruf</b><small>Intensivtraining · 170 €</small></a><a href="begegnungstraining.html"><b>Begegnungstraining</b><small>Trainingspaket · 350 €</small></a><a href="einzeltraining.html"><b>Einzeltraining</b><small>1 : 1 · 65 € / 60 Min.</small></a><a href="verhaltenstherapie.html"><b>Verhaltenstherapie</b><small>1 : 1 · 65 € / 60 Min.</small></a></div></div><a href="preise.html">Preise</a><a href="ueber-mich.html">Über mich</a><a href="galerie.html">Galerie</a><a href="#kontakt">Kontakt</a>
     </nav>
     <a class="btn btn-wa btn-s" href="#kontakt"><svg class="i" fill="currentColor"><use href="#i-wa"/></svg>Termin anfragen</a>
     <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
   </div>
 </header>
 <div class="mmenu" id="mmenu">
-  <a class="m" href="#finder">Kursfinder</a>
-  <a class="m" href="#kurse">Kurse &amp; Preise</a>
-  <a class="m" href="#johannes">Johannes</a>
-  <a class="m" href="#galerie">Galerie</a>
-  <a class="m" href="#faq">Fragen</a>
+  <a class="m" href="#top">Startseite</a>
+  <a class="m" href="preise.html">Preise</a><a class="m" href="ueber-mich.html">Über mich</a><a class="m" href="galerie.html">Galerie</a><a class="m" href="#kontakt">Kontakt</a>
+  <p class="mmh">Leistungen</p>
+  <div class="mmg"><a href="welpenschule.html">Welpenschule</a><a href="erziehungskurs.html">Erziehungskurs</a><a href="geraetearbeit.html">Gerätearbeit</a><a href="obedience.html">Obedience</a><a href="anti-giftkoeder-training.html">Anti-Giftköder-Training</a><a href="leinenfuehrigkeit.html">Leinenführigkeit</a><a href="rueckruf.html">Rückruf</a><a href="begegnungstraining.html">Begegnungstraining</a><a href="einzeltraining.html">Einzeltraining</a><a href="verhaltenstherapie.html">Verhaltenstherapie</a></div>
+  <div class="mmx"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a></div>
   <a class="btn btn-wa" data-wa href="#"><svg class="i" fill="currentColor"><use href="#i-wa"/></svg>Per WhatsApp schreiben</a>
   <a class="btn btn-g l" data-tel href="#"><svg class="i"><use href="#i-phone"/></svg><span data-teltext></span></a>
 </div>
@@ -570,6 +605,7 @@ section,[id]{scroll-margin-top:96px}
       <span class="eyebrow rv">Kurse &amp; Preise</span>
       <h2 class="rv">Klare Angebote. <em class="a">Klare Preise.</em></h2>
       <p class="lead rv">Alle Preise pro Hund und inklusive Mehrwertsteuer. Tippen Sie auf einen Kurs für Inhalte, Ablauf, Termine und Bilder.</p>
+      <p class="rv"><a class="more" href="preise.html">Komplette Preisliste ansehen <svg class="i"><use href="#i-arrow"/></svg></a></p>
     </div>
     <div class="tabs rv" id="tabs" role="tablist" aria-label="Kurse filtern">
       <button class="tab" role="tab" aria-selected="true" data-f="alle">Alle 9</button>
@@ -617,6 +653,7 @@ section,[id]{scroll-margin-top:96px}
       <ul class="mods rv" id="mods"></ul>
       <div class="cta rv">
         <a class="btn btn-wa" href="#kontakt"><svg class="i" fill="currentColor"><use href="#i-wa"/></svg>Johannes kennenlernen</a>
+        <a class="btn btn-g" href="ueber-mich.html"><svg class="i"><use href="#i-user"/></svg>Mehr über Johannes</a>
         <a class="btn btn-g" href="https://www.youtube.com/watch?v=LRWQASK_810" target="_blank" rel="noopener"><svg class="i"><use href="#i-play"/></svg>Video-Vorstellung</a>
       </div>
     </div>
@@ -663,6 +700,7 @@ section,[id]{scroll-margin-top:96px}
     <div class="tabs rv" id="gtabs" role="tablist" aria-label="Album wählen"></div>
     <p class="gcount" id="gcount"></p>
     <div class="g" id="g"></div>
+    <p class="rv" style="margin-top:18px"><a class="btn btn-d" href="galerie.html">Zur Galerie mit allen Alben <svg class="i"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
 
@@ -727,19 +765,19 @@ section,[id]{scroll-margin-top:96px}
     <div>
       <a class="flogo" href="#top"><img src="img/logo.png" srcset="img/logo.png 425w, img/logo@2x.png 850w" sizes="180px" width="425" height="140" alt="TIER.TRAINING Leipzig"></a>
       <p>Tiertraining Leipzig · Hundeschule in Leipzig und Umgebung<br>Inhaber Johannes Glintz<br>Schönauer Str. 11, 04420 Markranstädt</p>
+      <p class="fh"><b>Erreichbar</b>Montag – Freitag: 09:30–18:00 Uhr<br>Samstag &amp; Sonntag: geschlossen<br>Kurszeiten je nach Angebot</p>
     </div>
     <div>
-      <h4>Erreichbar</h4>
-      <ul><li>Montag – Freitag: 09:30–18:00 Uhr</li><li>Samstag &amp; Sonntag: geschlossen</li><li>Kurszeiten je nach Angebot</li></ul>
+      <h4>Leistungen</h4>
+      <ul><li><a href="welpenschule.html">Welpenschule</a></li><li><a href="erziehungskurs.html">Erziehungskurs</a></li><li><a href="geraetearbeit.html">Gerätearbeit</a></li><li><a href="obedience.html">Obedience</a></li><li><a href="anti-giftkoeder-training.html">Anti-Giftköder-Training</a></li><li><a href="leinenfuehrigkeit.html">Leinenführigkeit</a></li><li><a href="rueckruf.html">Rückruf</a></li><li><a href="begegnungstraining.html">Begegnungstraining</a></li><li><a href="einzeltraining.html">Einzeltraining</a></li><li><a href="verhaltenstherapie.html">Verhaltenstherapie</a></li></ul>
+    </div>
+    <div>
+      <h4>Tiertraining</h4>
+      <ul><li><a href="index.html">Startseite</a></li><li><a href="preise.html">Preise</a></li><li><a href="ueber-mich.html">Über mich</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="kontakt.html">Kontakt</a></li></ul>
     </div>
     <div>
       <h4>Rechtliches</h4>
-      <ul>
-        <li><a href="https://tiertraining-leipzig.de/impressum/">Impressum</a></li>
-        <li><a href="https://tiertraining-leipzig.de/datenschutz/">Datenschutz</a></li>
-        <li><a href="https://tiertraining-leipzig.de/agbs/">AGB</a></li>
-        <li>© <span id="yr">2026</span> Tiertraining Leipzig</li>
-      </ul>
+      <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li>© <span id="yr">2026</span> Tiertraining Leipzig</li></ul>
     </div>
   </div>
 </footer>
@@ -878,6 +916,7 @@ function imgFail(el){
 const img=(p,w,alt)=>`<img loading="lazy" decoding="async" alt="${alt}" data-p="${p}" src="${src(p,w)}" onload="this.classList.add('ok')" onerror="imgFail(this)">`;
 $$('img[data-p]').forEach(el=>{el.onload=()=>el.classList.add('ok');el.onerror=()=>imgFail(el);el.decoding='async';el.src=src(el.dataset.p,el.dataset.w||800)});
 const byId=id=>COURSES.find(c=>c.id===id);
+const PAGE={welpen:'welpenschule.html',erziehung:'erziehungskurs.html',geraete:'geraetearbeit.html',gift:'anti-giftkoeder-training.html',leine:'leinenfuehrigkeit.html',rueckruf:'rueckruf.html',begegnung:'begegnungstraining.html',einzel:'einzeltraining.html',verhalten:'verhaltenstherapie.html'};
 const fmt=d=>new Date(d+'T12:00:00').toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
 const future=d=>d&&new Date(d+'T23:59:59')>=new Date();
 const chk='<svg><use href="#i-check"/></svg>',arr='<svg class="i"><use href="#i-arrow"/></svg>',waI='<svg class="i" fill="currentColor"><use href="#i-wa"/></svg>';
@@ -974,7 +1013,7 @@ function openCourse(id){const c=byId(id),al=ALBUMS[id];dwAlbum=al?al.f.map(f=>PG
      ${c.note?`<div><svg class="i"><use href="#i-check"/></svg><span>${c.note}</span></div>`:''}
     </div>
     ${dwAlbum.length?`<div><h4>Eindrücke · ${dwAlbum.length} Bilder</h4><div class="strip">${dwAlbum.map((p,i)=>`<button class="ph" data-dwi="${i}" aria-label="Bild ${i+1} vergrößern">${gImg(p,c.name)}</button>`).join('')}</div></div>`:''}
-    <div class="act"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink({kurs:id})}">${waI}Per WhatsApp anfragen</a><a class="btn btn-g" href="#kontakt" data-book="${id}" data-close>Formular</a></div>
+    <div class="act"><a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink({kurs:id})}">${waI}Per WhatsApp anfragen</a><a class="btn btn-g" href="#kontakt" data-book="${id}" data-close>Formular</a><a class="more" href="${PAGE[id]}">Zur Kursseite ${arr}</a></div>
    </div>`;
   sheet.scrollTop=0;dw.classList.add('on');lock(true)}
 function closeDw(){dw.classList.remove('on');lock(false)}
@@ -1087,6 +1126,15 @@ try{
   else $('#stat').textContent='WhatsApp jederzeit · Telefon Mo–Fr 09:30–18:00';
 }catch(e){}
 $('#yr').textContent=new Date().getFullYear();
+
+/* Leistungen-Menü (Klick/Touch/Escape) */
+(function(){const d=document.getElementById('dd');if(!d)return;const b=d.querySelector('button');
+  const set=o=>{d.classList.toggle('o',o);b.setAttribute('aria-expanded',o)};
+  b.addEventListener('click',e=>{e.stopPropagation();set(!d.classList.contains('o'))});
+  document.addEventListener('click',e=>{if(!d.contains(e.target))set(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+  d.addEventListener('focusout',e=>{if(!d.contains(e.relatedTarget))set(false)});
+})();
 </script>
 </body>
 </html>
